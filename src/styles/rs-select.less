@@ -1,0 +1,136 @@
+.rs-select-component {
+    font-family: Arial, Helvetica, sans-serif;
+    width: 200px;
+    position: relative;
+
+    button.rs-select-button {
+        padding: 12px 17px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        border: 1.5px solid #C2C2C2;
+        border-radius: 4px;
+        width: 100%;
+        background-color: transparent;
+        position: relative;
+
+        &:focus {
+            outline: none;
+        }
+
+        label.rs-select-title {
+            color: #999;
+            font-family: Arial, Helvetica, sans-serif;
+            margin-bottom: 0;
+            font-weight: bold;
+        }
+
+        .rs-select-numbers-and-arrow {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+
+            .rs-select-items-number {
+                background-color: #999;
+                padding: 3px 4px;
+                border-radius: 20px;
+                width: 20px;
+                height: 20px;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+
+                &.empty {
+                    display: none;
+                }
+            }
+
+            .rs-select-arrow {
+                background-image: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAA8AAAAPCAMAAAAMCGV4AAAAPFBMVEUAAAC5ubm5ubm5ubm5ubm5ubm5ubm5ubm5ubm5ubm5ubm5ubm5ubm5ubm5ubm5ubm5ubm5ubm5ubm5ubnYhlhIAAAAE3RSTlMABAYPExQmTHR/gIKDys7o6+/xjg4DFQAAAElJREFUCFudi0sSQEAUxIIZ48/I/e9q8RZYklUnVQ0f6fatjVUcgFUjFLWHfEYo6gKQq25tUef45arHrREeCqnqxINUR140/OQCyZMDX5H/0pMAAAAASUVORK5CYII=);
+                width: 15px;
+                height: 9px;
+                background-position: center;
+                display: inline-block;
+            }
+        }
+    }
+
+    .rs-select-dropdown {
+        border-bottom-left-radius: 4px;
+        border-bottom-right-radius: 4px;
+        box-shadow: 0 0 5px 0 rgba(0, 0, 0, 0.13);
+        position: absolute;
+        top: 100%;
+        width: 100%;
+        display: none;
+
+        .rs-select-input-wrapper {
+            padding: 12px 13px;
+            border-bottom: 1px solid #CACACA;
+            display: inline-block;
+
+            input {
+                font-style: italic;
+                width: 100%;
+                padding: 3px 5px;
+                
+                // https://www.w3schools.com/cssref/sel_placeholder.asp
+                ::-webkit-input-placeholder { /* Edge */
+                    color: #999;
+                }
+
+                :-ms-input-placeholder { /* Internet Explorer 10-11 */
+                    color: #999;
+                }
+
+                ::placeholder {
+                    color: #999;
+                }
+            }
+        }
+
+        .rs-select-list-wrapper {
+            max-height: 400px;
+            background-color: white;
+            overflow: auto;
+
+            ul.rs-select-list {
+                list-style-type: none;
+                padding-left: 0;
+                margin: 10px 0;
+
+                li {
+                    padding: 5px 15px;
+                    cursor: pointer;
+
+                    &:hover {
+                        background-color: #999;
+                        color: white;
+                    }
+
+                    &:last-child {
+                        padding-bottom: 0;
+                    }
+                }
+            }
+        }
+    }
+
+    &.opened {
+        .rs-select-button {
+            border-color: #999;
+            border-bottom-left-radius: 0;
+            border-bottom-right-radius: 0;
+
+            .rs-select-numbers-and-arrow {
+                .rs-select-arrow {
+                    background-image: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAA8AAAAPCAMAAAAMCGV4AAAAV1BMVEUAAAC5ubm5ubm5ubm5ubm5ubm5ubm5ubm5ubm5ubm5ubm5ubm5ubm5ubm5ubm5ubm5ubm5ubm5ubm5ubm5ubm5ubm5ubm5ubm5ubm5ubm5ubm5ubm5ubnXR20uAAAAHHRSTlMAAQMECAoSGxwdNTg5OklRXXSCkpeYmr7A3vf5fYZ6vQAAAFJJREFUCFudjDkCgjAAwNKicnhwiKBt/v9OBhzKqNmSIfAPYawPOpuag1qEMGsRwkt9rJpagLCoV+KquQWe6g2Ib80XGPQOe/icgL77fqvpzM9sXkwFUQxZvOYAAAAASUVORK5CYII=);
+                }
+            }
+        }
+
+        .rs-select-dropdown {
+            display: block;
+        }
+    }
+}
