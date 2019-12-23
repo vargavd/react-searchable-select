@@ -9,7 +9,8 @@ class RSSelect extends React.Component {
         this.state = {
             opened: true,
             filterText: '',
-            filteredOptionList: props.options
+            filteredOptionList: props.options,
+            selectedItems: []
         };
     }
 
@@ -51,6 +52,20 @@ class RSSelect extends React.Component {
             });
         }
     }
+    clickOnListElem = (event) => {
+        event.target.classList.toggle('selected');
+
+        let selectedItems = [...this.state.selectedItems, event.target.innerText];
+
+        if (event.target.className !== 'selected') {
+            selectedItems = this.state.selectedItems.filter(item => event.target.innerText!== item);
+        }
+
+        this.setState({ selectedItems }, () => {
+            this.props.selectionChanged(this.state.selectedItems);
+        });
+
+    }
 
     // MISC
     getComponentWrapper = (elem) => {
@@ -76,7 +91,9 @@ class RSSelect extends React.Component {
                     </div>
                     <div className="rs-select-list-wrapper">
                         <ul className="rs-select-list">
-                            { this.state.filteredOptionList.map((optionText) => (<li key={optionText}>{optionText}</li>) )}
+                            { this.state.filteredOptionList.map((optionText) => (
+                                <li key={optionText} onClick={ this.clickOnListElem }>{optionText}</li>
+                            ))}
                         </ul>
                     </div>
                 </div>
