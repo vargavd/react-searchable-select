@@ -212,7 +212,7 @@ export default class App extends React.Component {
 
     // events
     selectionChanged = selectedCountries => {
-        this.setState({ selectedCountries });
+        this.setState({ selectedCountries: selectedCountries.sort() });
     };
 
     render() {
