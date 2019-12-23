@@ -61,7 +61,10 @@ class RSSelect extends React.Component {
             selectedItems = this.state.selectedItems.filter(item => event.target.innerText!== item);
         }
 
-        this.setState({ selectedItems }, () => {
+        this.setState({ 
+            selectedItems: selectedItems,
+            opened: false
+        }, () => {
             this.props.selectionChanged(this.state.selectedItems);
         });
 
@@ -81,7 +84,7 @@ class RSSelect extends React.Component {
                         Country
                     </label>
                     <div className="rs-select-numbers-and-arrow">
-                        <span className="rs-select-items-number empty"></span>
+                        <span className="rs-select-items-number">{ this.state.selectedItems.length > 0 ? this.state.selectedItems.length : '' }</span>
                         <span className="rs-select-arrow"></span>
                     </div>
                 </button>
